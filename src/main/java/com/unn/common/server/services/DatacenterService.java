@@ -1,6 +1,7 @@
 package com.unn.common.server.services;
 
 import com.unn.common.dataset.DatasetDescriptor;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -18,4 +19,12 @@ public interface DatacenterService {
     @GET("/dataset/register")
     Call<String> registerAgent(@Body DatasetDescriptor descriptor);
 
+    @POST("/dataset/{namespace}/store/raw")
+    Call<String> storeDataset(
+        @Path("namespace") String namespace,
+        @Body RequestBody body
+    );
+
+    @POST("/brain/reset")
+    Call<String> resetBrain();
 }
