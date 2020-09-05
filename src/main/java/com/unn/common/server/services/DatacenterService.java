@@ -16,7 +16,7 @@ public interface DatacenterService {
     @GET("/dataset/features/random/layer/{layer}")
     Call<HashMap<String, List<String>>> getRandomFeatures(@Path("layer") int layer);
 
-    @GET("/dataset/register")
+    @POST("/dataset/register")
     Call<String> registerAgent(@Body DatasetDescriptor descriptor);
 
     @POST("/dataset/{namespace}/store/raw")
