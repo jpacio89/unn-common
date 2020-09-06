@@ -14,7 +14,10 @@ public interface DatacenterService {
     Call<String> fetchDataset(@Body HashMap<String, List<String>> options);
 
     @GET("/dataset/features/random/layer/{layer}")
-    Call<HashMap<String, List<String>>> getRandomFeatures(@Path("layer") int layer);
+    Call<HashMap<String, List<String>>> getRandomFeatures(
+        @Path("layer") int layer,
+        @Query("whitelist") List<String> whitelist
+    );
 
     @POST("/dataset/register")
     Call<String> registerAgent(@Body DatasetDescriptor descriptor);
