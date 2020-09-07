@@ -14,4 +14,7 @@ public interface MaestroService {
 
     @POST("/agent/register")
     Call<StandardResponse> registerAgent(@Body Agent agent);
+
+    @POST("/agent/hearbeat")
+    Call<StandardResponse> heartbeat(@Body Agent me);
 }
