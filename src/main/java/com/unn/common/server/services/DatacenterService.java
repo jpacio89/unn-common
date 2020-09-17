@@ -1,5 +1,6 @@
 package com.unn.common.server.services;
 
+import com.unn.common.dataset.Dataset;
 import com.unn.common.dataset.DatasetDescriptor;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -30,4 +31,9 @@ public interface DatacenterService {
 
     @POST("/brain/reset")
     Call<String> resetBrain();
+
+    @GET("/dataset/{namespace}/body/unpredicted")
+    Call<String> fetchUnpredicted(
+        @Path("namespace") String namespace
+    );
 }

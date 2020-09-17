@@ -4,6 +4,8 @@ public class Feature {
     String namespace;
     String column;
 
+    public Feature() { }
+
     public Feature(String payload) {
         init(payload);
     }
@@ -22,11 +24,26 @@ public class Feature {
         this.namespace = namespace;
     }
 
+    public Feature withNamespace(String namespace) {
+        this.namespace = namespace;
+        return this;
+    }
+
     public String getColumn() {
         return column;
     }
 
     public void setColumn(String column) {
         this.column = column;
+    }
+
+    public Feature withColumn(String column) {
+        this.column = column;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s@%s", this.column, this.namespace);
     }
 }
