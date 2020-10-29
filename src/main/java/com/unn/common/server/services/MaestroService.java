@@ -1,5 +1,6 @@
 package com.unn.common.server.services;
 
+import com.unn.common.mining.MiningReport;
 import com.unn.common.operations.Agent;
 import com.unn.common.operations.DatacenterOrigin;
 import com.unn.common.server.StandardResponse;
@@ -15,6 +16,9 @@ public interface MaestroService {
     @POST("/agent/register")
     Call<StandardResponse> registerAgent(@Body Agent agent);
 
-    @POST("/agent/hearbeat")
+    @POST("/agent/heartbeat")
     Call<StandardResponse> heartbeat(@Body Agent me);
+
+    @POST("/mining/report")
+    Call<String> sendMiningReport(@Body MiningReport report);
 }

@@ -1,6 +1,7 @@
 package com.unn.common.operations;
 
 public class AgentRole {
+    String id;
     MiningTarget target;
     Agent agent;
     int layer;
@@ -51,5 +52,11 @@ public class AgentRole {
         return this;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 }

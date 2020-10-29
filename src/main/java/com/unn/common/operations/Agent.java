@@ -12,7 +12,12 @@ public class Agent {
     int id;
 
     public Agent() {
+
+    }
+
+    public Agent newInstance() {
         this.uuid = UUID.randomUUID().toString();
+        return this;
     }
 
     public String getType() {
