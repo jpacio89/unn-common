@@ -30,4 +30,11 @@ public class MiningReport {
 	public void setRole(AgentRole role) {
 		this.role = role;
 	}
+
+	@Override
+	public String toString() {
+		return confusionMatrixes.entrySet().stream()
+			.map(entry -> String.format("%s -> %s\n", entry.getKey(), entry.getValue().toString()))
+			.reduce("", String::concat);
+	}
 }
