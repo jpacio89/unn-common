@@ -1,5 +1,7 @@
 package com.unn.common.operations;
 
+import java.util.Objects;
+
 public class AgentRole {
     String id;
     MiningTarget target;
@@ -58,5 +60,19 @@ public class AgentRole {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AgentRole agentRole = (AgentRole) o;
+        return layer == agentRole.layer &&
+                agent.equals(agentRole.agent);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(agent, layer);
     }
 }

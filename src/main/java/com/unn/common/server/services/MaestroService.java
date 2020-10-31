@@ -2,6 +2,7 @@ package com.unn.common.server.services;
 
 import com.unn.common.mining.MiningReport;
 import com.unn.common.operations.Agent;
+import com.unn.common.operations.AgentRole;
 import com.unn.common.operations.DatacenterOrigin;
 import com.unn.common.server.StandardResponse;
 import retrofit2.Call;
@@ -17,8 +18,8 @@ public interface MaestroService {
     Call<StandardResponse> registerAgent(@Body Agent agent);
 
     @POST("/agent/heartbeat")
-    Call<StandardResponse> heartbeat(@Body Agent me);
+    Call<StandardResponse> heartbeat(@Body AgentRole me);
 
     @POST("/mining/report")
-    Call<String> sendMiningReport(@Body MiningReport report);
+    Call<StandardResponse> sendMiningReport(@Body MiningReport report);
 }
