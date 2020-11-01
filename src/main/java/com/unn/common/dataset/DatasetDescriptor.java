@@ -1,5 +1,7 @@
 package com.unn.common.dataset;
 
+import java.util.ArrayList;
+
 public class DatasetDescriptor {
     public class Layer {
         public static final int INPUT = 0;
@@ -11,7 +13,7 @@ public class DatasetDescriptor {
     String namespace;
     String[] upstreamDependencies;
     String[] downstreamDependencies;
-    String[] makerPrimers;
+    Integer[] makerPrimers;
     int layer;
     Header header;
 
@@ -131,7 +133,16 @@ public class DatasetDescriptor {
         return makerPrimers;
     }
 
-    public void setMakerPrimers(String[] makerPrimers) {
+    public void setMakerPrimers(Integer[] makerPrimers) {
         this.makerPrimers = makerPrimers;
+    }
+
+    public void setMakerPrimers(ArrayList<Integer> makerPrimers) {
+        this.makerPrimers = makerPrimers.stream().toArray(Integer[]::new);
+    }
+
+    public DatasetDescriptor withMakerPrimers(ArrayList<Integer> makerTimes) {
+        this.setMakerPrimers(makerTimes);
+        return this;
     }
 }
