@@ -72,7 +72,7 @@ public class ConfusionMatrix {
 
     @Override
     public String toString() {
-        return String.format("unknowns: %d, accuracy: %d, true positives: %d, true negatives: %d",
+        return String.format("unknowns: %d%%, accuracy: %d%%, true positives: %d%%, true negatives: %d%%",
             getUnknownRate(),
             getAccuracy(),
             getTpr(),

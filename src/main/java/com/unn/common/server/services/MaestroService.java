@@ -22,4 +22,7 @@ public interface MaestroService {
 
     @POST("/mining/report")
     Call<StandardResponse> sendMiningReport(@Body MiningReport report);
+
+    @POST("/mining/deadend")
+    Call<StandardResponse> deadEnd(AgentRole role);
 }

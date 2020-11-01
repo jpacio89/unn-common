@@ -11,6 +11,7 @@ public class DatasetDescriptor {
     String namespace;
     String[] upstreamDependencies;
     String[] downstreamDependencies;
+    String[] makerPrimers;
     int layer;
     Header header;
 
@@ -124,5 +125,13 @@ public class DatasetDescriptor {
 
     public boolean isAnnotated() {
         return this.downstreamDependencies == null;
+    }
+
+    public String[] getMakerPrimers() {
+        return makerPrimers;
+    }
+
+    public void setMakerPrimers(String[] makerPrimers) {
+        this.makerPrimers = makerPrimers;
     }
 }
