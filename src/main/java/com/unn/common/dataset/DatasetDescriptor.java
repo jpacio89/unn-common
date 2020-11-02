@@ -129,7 +129,7 @@ public class DatasetDescriptor {
         return this.downstreamDependencies == null;
     }
 
-    public String[] getMakerPrimers() {
+    public Integer[] getMakerPrimers() {
         return makerPrimers;
     }
 
