@@ -25,4 +25,8 @@ public class Dataset {
         this.body = body;
         return this;
     }
+
+    public int size() {
+        return this.body.getRows().length;
+    }
 }

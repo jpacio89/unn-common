@@ -27,7 +27,7 @@ public class NetworkUtils {
 
     public static void registerAgent(DatasetDescriptor descriptor) {
         try {
-            DatacenterService service = Utils.getDatacenter(true);
+            DatacenterService service = Utils.getDatacenter();
             service.registerAgent(descriptor).execute();
         } catch (IOException e) {
             e.printStackTrace();
@@ -36,7 +36,7 @@ public class NetworkUtils {
 
     public static void uploadDataset(String namespace, String csv) {
         try {
-            DatacenterService service = Utils.getDatacenter(true);
+            DatacenterService service = Utils.getDatacenter();
             RequestBody body = RequestBody.create(MediaType.parse("text/plain"), csv);
             Call<String> call = service.storeDataset(namespace, body);
             call.execute();

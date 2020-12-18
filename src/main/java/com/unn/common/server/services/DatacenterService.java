@@ -1,11 +1,13 @@
 package com.unn.common.server.services;
 
+import com.google.gson.Gson;
 import com.unn.common.dataset.Dataset;
 import com.unn.common.dataset.DatasetDescriptor;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -35,5 +37,14 @@ public interface DatacenterService {
     @GET("/dataset/{namespace}/body/unpredicted")
     Call<String> fetchUnpredicted(
         @Path("namespace") String namespace
+    );
+
+    @GET("/dataset/namespaces")
+    Call<ArrayList<String>> getNamespaces();
+
+    @GET("/dataset/{namespace}/data")
+    Call<String> getNamespaceData(
+        @Path("namespace") String namespace,
+        @Query("fromPrimer") Integer fromPrimer
     );
 }

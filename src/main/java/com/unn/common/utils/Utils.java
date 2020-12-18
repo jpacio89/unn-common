@@ -12,7 +12,7 @@ public class Utils {
     private static DatacenterService datacenter;
     private static MaestroService maestro;
 
-    public static DatacenterService getDatacenter(boolean isJson) {
+    public static DatacenterService getDatacenter() {
         if (datacenter == null) {
             Retrofit.Builder retrofit = new Retrofit.Builder()
                     .baseUrl(String.format("%s://%s:%d",
