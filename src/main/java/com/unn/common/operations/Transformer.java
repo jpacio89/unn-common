@@ -1,4 +1,0 @@
-package com.unn.common.operations;
-
-public class Transformer {
-}

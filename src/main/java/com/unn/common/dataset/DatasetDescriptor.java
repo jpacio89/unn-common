@@ -133,10 +133,6 @@ public class DatasetDescriptor {
         return makerPrimers;
     }
 
-    public void setMakerPrimers(Integer[] makerPrimers) {
-        this.makerPrimers = makerPrimers;
-    }
-
     public void setMakerPrimers(ArrayList<Integer> makerPrimers) {
         this.makerPrimers = makerPrimers.stream().toArray(Integer[]::new);
     }

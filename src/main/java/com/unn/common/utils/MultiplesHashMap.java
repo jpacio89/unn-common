@@ -1,10 +1,7 @@
 package com.unn.common.utils;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.*;
 
 public class MultiplesHashMap<Key, Value> implements Serializable
 {
@@ -116,5 +113,9 @@ public class MultiplesHashMap<Key, Value> implements Serializable
 	
 	public Collection<ArrayList<Value>> values() {
 		return this.map_.values();
+	}
+
+	public Set<Key> keys() {
+		return this.map_.keySet();
 	}
 }

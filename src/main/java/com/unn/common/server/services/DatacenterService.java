@@ -1,8 +1,7 @@
 package com.unn.common.server.services;
 
-import com.google.gson.Gson;
-import com.unn.common.dataset.Dataset;
 import com.unn.common.dataset.DatasetDescriptor;
+import com.unn.common.transformers.TransformerDescriptor;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -40,11 +39,14 @@ public interface DatacenterService {
     );
 
     @GET("/dataset/namespaces")
-    Call<ArrayList<String>> getNamespaces();
+    Call<ArrayList<DatasetDescriptor>> getNamespaces();
 
     @GET("/dataset/{namespace}/data")
     Call<String> getNamespaceData(
         @Path("namespace") String namespace,
         @Query("fromPrimer") Integer fromPrimer
     );
+
+    @GET("/brain/transformers")
+    Call<ArrayList<TransformerDescriptor>> getTransformers();
 }
