@@ -8,6 +8,10 @@ public class Serializer {
     public static void write(Object o, String path, String extension) {
         try {
             String fullPath = String.format("%s.%s.%s", path, version, extension);
+            File f = new File(fullPath);
+            if (!f.exists()) {
+                f.createNewFile();
+            }
             FileOutputStream fileOut = new FileOutputStream(fullPath);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(o);
