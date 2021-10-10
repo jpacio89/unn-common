@@ -1,8 +1,9 @@
 package com.unn.common.dataset;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Header {
+public class Header implements Serializable {
     String[] names;
 
     public Header() {

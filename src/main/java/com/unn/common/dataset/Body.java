@@ -1,6 +1,8 @@
 package com.unn.common.dataset;
 
-public class Body {
+import java.io.Serializable;
+
+public class Body implements Serializable {
     Row[] rows;
 
     public Body() {

@@ -1,8 +1,9 @@
 package com.unn.common.dataset;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Row {
+public class Row implements Serializable {
     String[] values;
 
     public Row() {

@@ -1,6 +1,8 @@
 package com.unn.common.dataset;
 
-public class Dataset {
+import java.io.Serializable;
+
+public class Dataset implements Serializable {
     DatasetDescriptor descriptor;
     Body body;
 

@@ -1,8 +1,9 @@
 package com.unn.common.dataset;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DatasetDescriptor {
+public class DatasetDescriptor implements Serializable {
     public class Layer {
         public static final int INPUT = 0;
         public static final int OUTPUT = -1;
