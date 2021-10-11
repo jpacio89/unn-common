@@ -1,6 +1,5 @@
 package com.unn.common.boosting;
 
-import com.unn.common.boosting.TuringConfig;
 import com.unn.common.dataset.Dataset;
 import com.unn.common.utils.RandomManager;
 import com.unn.common.utils.Serializer;
@@ -13,7 +12,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.UUID;
 
 public class Archive implements Serializable {
@@ -25,13 +23,19 @@ public class Archive implements Serializable {
     ArrayList<String> memory = new ArrayList<>();
 
     public Archive() {
-        this.uuid = UUID.randomUUID();
-        this.folderPath = String.format("./archives/%s", uuid.toString());
+        if (TuringConfig.get().ARCHIVE_ID != null) {
+            this.uuid = UUID.fromString(TuringConfig.get().ARCHIVE_ID);
+        } else {
+            this.uuid = UUID.randomUUID();
+        }
+        this.folderPath = String.format("%s/archives/%s",
+                TuringConfig.get().BASE_PATH, uuid.toString());
     }
 
     public Archive(String _uuid) {
         this.uuid = UUID.fromString(_uuid);
-        this.folderPath = String.format("./archives/%s", uuid.toString());
+        this.folderPath = String.format("%s/archives/%s",
+                TuringConfig.get().BASE_PATH, uuid.toString());
     }
 
     public static Archive get() {
@@ -48,7 +52,7 @@ public class Archive implements Serializable {
             theDir.mkdirs();
         }
         String iniPath = String.format("%s/%s", folderPath, "_archive");
-        File ini = new File(iniPath);
+        File ini = new File(String.format("%s.v1.conf", iniPath));
         if (ini.exists()) {
             this.preload();
             return;
@@ -73,8 +77,9 @@ public class Archive implements Serializable {
         File[] files = archiveDir.listFiles((File dir, String name) ->
                 name.endsWith(".booster"));
         this.memory.clear();
-        Arrays.stream(files).forEach(file -> this.memory.add(
-                file.getName().replace(".booster", "")));
+        Arrays.stream(files)
+                .forEach(file -> this.memory.add(
+                        file.getName().split("\\.")[0]));
     }
 
     public boolean hasProgram(String program) {
