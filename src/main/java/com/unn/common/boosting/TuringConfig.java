@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class TuringConfig implements Serializable {
     private static TuringConfig config;
 
-    public String BASE_PATH = "/Users/joaocoelho/Documents/Data/unn-boosters";
+    public String BASE_PATH = "/Volumes/Legatron/boosters";
 
-    public String ARCHIVE_ID = "dc12ddfc-2690-4742-85c3-10c561b8a72c";
+    public String ARCHIVE_ID = "deb24fc8-0c07-4f36-9311-44e7b242d66d";
 
     // Minimum acceptable instruction count inside loops
     public int MIN_LOOP_SIZE = 4;
