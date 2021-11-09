@@ -34,7 +34,16 @@ public class MiningReport {
 	@Override
 	public String toString() {
 		return confusionMatrixes.entrySet().stream()
-			.map(entry -> String.format("%s -> %s\n", entry.getKey(), entry.getValue().toString()))
+			.map(entry -> {
+				StringBuilder builder = new StringBuilder();
+				builder.append(String.format("##############################################%n"));
+				builder.append(String.format("+--------------------------------------------+%n"));
+				builder.append(String.format("| %-42s |%n", entry.getKey()));
+				builder.append(String.format("+--------------------------------------------+%n"));
+				builder.append(String.format("%s%n", entry.getValue().toString()));
+				builder.append(String.format("##############################################%n%n"));
+				return builder.toString();
+			})
 			.reduce("", String::concat);
 	}
 }
