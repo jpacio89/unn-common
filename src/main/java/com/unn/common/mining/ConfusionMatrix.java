@@ -1,9 +1,10 @@
 package com.unn.common.mining;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-public class ConfusionMatrix {
+public class ConfusionMatrix implements Serializable {
     int occurences[][];
 
     public ConfusionMatrix() { }

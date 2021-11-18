@@ -1,6 +1,8 @@
 package com.unn.common.operations;
 
-public class MiningTarget {
+import java.io.Serializable;
+
+public class MiningTarget implements Serializable {
     String feature;
 
     public String getFeature() {

@@ -1,9 +1,10 @@
 package com.unn.common.operations;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Agent {
+public class Agent implements Serializable {
     String uuid;
     String type;
     String protocol;

@@ -2,12 +2,27 @@ package com.unn.common.utils;
 
 import com.unn.common.dataset.*;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CSVHelper {
     final String SEPARATOR = ",";
 
     public CSVHelper() { }
+
+    public void writeToFile(String path, Dataset dataset) {
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter(path));
+            writer.write(this.toString(dataset));
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public String toString(Dataset dataset) {
         StringBuilder builder = new StringBuilder();

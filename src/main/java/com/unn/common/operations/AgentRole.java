@@ -1,8 +1,9 @@
 package com.unn.common.operations;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class AgentRole {
+public class AgentRole implements Serializable {
     String id;
     MiningTarget target;
     Agent agent;
