@@ -6,20 +6,25 @@ public class Serializer {
     private static final String version = "v1";
 
     public static void write(Object o, String path, String extension) {
+        String fullPath = String.format("%s.%s.%s", path, version, extension);
+        ObjectOutputStream objectOutputStream = null;
         try {
-            String fullPath = String.format("%s.%s.%s", path, version, extension);
-            File f = new File(fullPath);
-            if (!f.exists()) {
-                f.createNewFile();
+            RandomAccessFile raf = new RandomAccessFile(fullPath, "rw");
+            FileOutputStream fos = new FileOutputStream(raf.getFD());
+            objectOutputStream = new ObjectOutputStream(fos);
+            objectOutputStream.writeObject(o);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (objectOutputStream != null) {
+                try {
+                    objectOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-            FileOutputStream fileOut = new FileOutputStream(fullPath);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(o);
-            out.close();
-            fileOut.close();
-            System.out.printf("Serialized data is saved in %s", fullPath);
-        } catch (IOException i) {
-            i.printStackTrace();
         }
     }
 
