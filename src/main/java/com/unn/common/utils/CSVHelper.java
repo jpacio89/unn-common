@@ -13,10 +13,14 @@ public class CSVHelper {
 
     public CSVHelper() { }
 
-    public void writeToFile(String path, Dataset dataset) {
+    public void writeToFile(String path, String filename, Dataset dataset) {
         BufferedWriter writer;
         try {
-            writer = new BufferedWriter(new FileWriter(path));
+            File folder = new File(path);
+            if (!folder.exists()) {
+                folder.mkdirs();
+            }
+            writer = new BufferedWriter(new FileWriter(String.format("%s/%s", path, filename)));
             writer.write(this.toString(dataset));
             writer.close();
         } catch (IOException e) {
