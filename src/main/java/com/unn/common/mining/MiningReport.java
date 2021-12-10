@@ -2,9 +2,10 @@ package com.unn.common.mining;
 
 import com.unn.common.operations.AgentRole;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class MiningReport {
+public class MiningReport implements Serializable {
 	AgentRole role;
 	public HashMap<String, ConfusionMatrix> confusionMatrixes;
 

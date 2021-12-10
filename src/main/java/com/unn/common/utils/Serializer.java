@@ -13,6 +13,9 @@ public class Serializer {
             FileOutputStream fos = new FileOutputStream(raf.getFD());
             objectOutputStream = new ObjectOutputStream(fos);
             objectOutputStream.writeObject(o);
+            objectOutputStream.close();
+            fos.close();
+            raf.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
